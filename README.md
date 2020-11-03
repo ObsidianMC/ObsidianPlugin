@@ -18,6 +18,7 @@ Now you should be able to use Obsidian's MyGet feed.
 2. Go to the Debug tab.
 3. Set `Launch:` to Executable.
 4. Click `Browse...` next to `Executable:` and find Obsidian.exe.
+5. Click `Browse...` next to `Working Directory:` and select the folder that `Obsidian.exe` was in.
 5. Go to the `Build` tab.
 6. Click `Browse...` after `Output Path`.
 7. Select your `plugins` folder.
