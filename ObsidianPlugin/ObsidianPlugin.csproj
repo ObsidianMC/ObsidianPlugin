@@ -4,8 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\Git Repos\Obsidian\Obsidian\bin\Debug\netcoreapp3.1\Server-0\plugins\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Obsidian.API" Version="1.0.0" />
+    <Reference Include="Obsidian.API">
+      <HintPath>..\..\Obsidian\Obsidian.API\bin\Debug\netcoreapp3.1\Obsidian.API.dll</HintPath>
+	  <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>
