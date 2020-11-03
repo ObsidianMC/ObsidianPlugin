@@ -1,12 +1,26 @@
 # ObsidianPlugin
 A Template Repository for building Obsidian plugins.
 
-## Obsidian.API reference
+## Obsidian.Api.dll reference
 You need the Obsidian.API dll to be able to develop plugins.
 1. Add Obsidian.Api to your references.
 2. Open your `.csproj` file.
 3. Find the reference to `Obsidian.Api`.
 4. Add the following node as a child to that property: `<Private>false</Private>`.
+
+## Myget reference
+Instead of directly referencing the DLL we can also pull it from myget for a quick streamlined dev environment.
+1. Add `https://www.myget.org/F/obsidian/api/v3/index.json` to your Package sources.
+2. Search for `Obsidian.Api` on Nuget.
+3. Install the latest version.
+4. Open your `.csproj` file.
+5. Make sure the package reference looks like this:
+```
+<PackageReference Include="Obsidian.API" Version="1.0.110" ExcludeAssets="runtime">
+  <Private>false</Private>
+</PackageReference>
+```
+What's important here is that you include the `ExcludeAssets` parameter and the `Private` node. This will make sure Obsidian will use it's own Obsidian.Api assembly.
 
 ## Debugging Plugins
 1. Go to your project properties.
