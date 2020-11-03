@@ -23,3 +23,6 @@ Now you should be able to use Obsidian's MyGet feed.
 6. Click `Browse...` after `Output Path`.
 7. Select your `plugins` folder.
 8. Click the debug button to start debugging your plugin. You can now easily set breakpoints.
+
+## Hint
+Make sure the reference to Obsidian.API contains the `<Private>false</Private>` node!!
