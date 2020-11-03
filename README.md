@@ -1,17 +1,12 @@
 # ObsidianPlugin
 A Template Repository for building Obsidian plugins.
 
-## Myget
-To add the nuget source:
-
-1. `Tools>Nuget Package Manager>Package Manager Settings>Package Sources`,
-2. click the big `+`
-3. click the new value that appeared
-4. set the name to anything you like (e.g. `Obsidian`)
-5. set the source to `https://www.myget.org/F/obsidian/api/v3/index.json`
-6. click `Update`
-
-Now you should be able to use Obsidian's MyGet feed.
+## Obsidian.API reference
+You need the Obsidian.API dll to be able to develop plugins.
+1. Add Obsidian.Api to your references.
+2. Open your `.csproj` file.
+3. Find the reference to `Obsidian.Api`.
+4. Add the following node as a child to that property: `<Private>false</Private>`.
 
 ## Debugging Plugins
 1. Go to your project properties.
@@ -23,6 +18,3 @@ Now you should be able to use Obsidian's MyGet feed.
 6. Click `Browse...` after `Output Path`.
 7. Select your `plugins` folder.
 8. Click the debug button to start debugging your plugin. You can now easily set breakpoints.
-
-## Hint
-Make sure the reference to Obsidian.API contains the `<Private>false</Private>` node!!

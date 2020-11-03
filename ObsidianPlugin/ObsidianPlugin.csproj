@@ -9,9 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Obsidian.API" Version="1.0.105">
-		<Private>false</Private>
-	</PackageReference>
+    <Reference Include="Obsidian.API">
+      <HintPath>..\..\Obsidian\Obsidian.API\bin\Debug\netcoreapp3.1\Obsidian.API.dll</HintPath>
+	  <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>
