@@ -9,7 +9,7 @@ You need the Obsidian.API dll to be able to develop plugins.
 4. Add the following node as a child to that property: `<Private>false</Private>`.
 
 ## Myget reference
-Instead of directly referencing the DLL we can also pull it from myget for a quick streamlined dev environment.
+Instead of directly referencing the DLL we can also pull it from myget for a quick streamlined dev environment. This template repository has the package reference set up for you, so you only need to add the package source.
 1. Add `https://www.myget.org/F/obsidian/api/v3/index.json` to your Package sources.
 2. Search for `Obsidian.Api` on Nuget.
 3. Install the latest version.
