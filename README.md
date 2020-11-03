@@ -22,6 +22,13 @@ Instead of directly referencing the DLL we can also pull it from myget for a qui
 ```
 What's important here is that you include the `ExcludeAssets` parameter and the `Private` node. This will make sure Obsidian will use it's own Obsidian.Api assembly.
 
+### Myget on CI?
+Use the following two pre-build commands:
+```
+nuget sources add -Name Obsidian-Myget -Source https://www.myget.org/F/obsidian/api/v3/index.json
+nuget restore
+```
+
 ## Debugging Plugins
 1. Go to your project properties.
 2. Go to the Debug tab.
