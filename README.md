@@ -1,5 +1,5 @@
 # ObsidianPlugin
-A Template Repository for building Obsidian plugins.
+A Template Repository for building Obsidian plugins. Make sure to rename the assemblies to ensure compatibility with other plugins.
 
 ## Obsidian.Api.dll reference
 You need the Obsidian.API dll to be able to develop plugins.
