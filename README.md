@@ -25,4 +25,4 @@ Now you should be able to use Obsidian's MyGet feed.
 8. Click the debug button to start debugging your plugin. You can now easily set breakpoints.
 
 ## Hint
-Make sure the reference to Obsidian.API contains the `<Private>false</Private>` node!!
+Make sure the reference to `Obsidian.API` in your `.csproj` contains the `<Private>false</Private>` node!!
