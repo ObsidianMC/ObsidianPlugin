@@ -2,7 +2,7 @@
 A Template Repository for building [Obsidian](https://github.com/Naamloos/Obsidian) plugins. Make sure to rename the assemblies to ensure compatibility with other plugins.
 
 ## Obsidian.Api.dll reference
-You need the Obsidian.API dll to be able to develop plugins.
+You need the Obsidian.API dll to be able to develop plugins. This template repository has the myget feed pre-setup.
 1. Add Obsidian.Api to your references.
 2. Open your `.csproj` file.
 3. Find the reference to `Obsidian.Api`.
@@ -30,6 +30,8 @@ nuget restore
 ```
 
 ## Debugging Plugins
+**To debug this template repository, all you have to do is add your Obsidian server files to the ServerFiles folder.**
+
 1. Go to your project properties.
 2. Go to the Debug tab.
 3. Set `Launch:` to Executable.
