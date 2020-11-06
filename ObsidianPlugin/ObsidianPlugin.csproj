@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\Git Repos\Obsidian\Obsidian\bin\Debug\netcoreapp3.1\Server-0\plugins\</OutputPath>
+    <OutputPath>ServerFiles\Server-0\plugins\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Obsidian.API" Version="1.0.110" ExcludeAssets="runtime">
+    <PackageReference Include="Obsidian.API" Version="1.0.116" ExcludeAssets="runtime">
 		<Private>false</Private>
 	</PackageReference>
   </ItemGroup>

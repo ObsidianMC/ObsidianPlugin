@@ -25,10 +25,18 @@ namespace ObsidianPlugin
 
         public class PluginCommands : BaseCommandClass
         {
-            [Command("health")]
-            [CommandInfo("Reads your health", "/health")]
-            public async Task HealthAsync(ObsidianContext ctx)
+            [Command("click")]
+            [CommandInfo("Posts a clickable link to chat", "/health")]
+            public async Task HealthAsync(ObsidianContext ctx, [Remaining]string link)
             {
+                var chat = IChatMessage.CreateNew();
+                chat.Text = $"<{ctx.Player.Username}>: {link}";
+                chat.ClickEvent.Action = ETextAction.OpenUrl;
+                chat.ClickEvent.Value = link;
+                chat.HoverEvent.Action = ETextAction.ShowText;
+                chat.HoverEvent.Value = "Click to open link";
+                chat.Underline = true;
+
                 await ctx.Player.SendMessageAsync(ctx.Player.Health.ToString());
             }
         }

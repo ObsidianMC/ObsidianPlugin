@@ -2,8 +2,8 @@
   "profiles": {
     "ObsidianPlugin": {
       "commandName": "Executable",
-      "executablePath": "D:\\Git Repos\\Obsidian\\Obsidian\\bin\\Debug\\netcoreapp3.1\\Obsidian.exe",
-      "workingDirectory": "D:\\Git Repos\\Obsidian\\Obsidian\\bin\\Debug\\netcoreapp3.1\\"
+      "executablePath": "ServerFiles\\Obsidian.exe",
+      "workingDirectory": "ServerFiles\\"
     }
   }
 }
