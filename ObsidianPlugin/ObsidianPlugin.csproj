@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Obsidian.API" Version="1.0.116" ExcludeAssets="runtime">
+    <PackageReference Include="Obsidian.API" Version="1.0.173" ExcludeAssets="runtime">
 		<Private>false</Private>
 	</PackageReference>
   </ItemGroup>
