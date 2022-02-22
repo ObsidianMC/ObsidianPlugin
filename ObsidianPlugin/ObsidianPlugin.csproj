@@ -15,6 +15,7 @@
   <ItemGroup>
     <Reference Include="Obsidian.API">
       <HintPath>ServerFiles\Obsidian.API.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
     </Reference>
   </ItemGroup>
 
