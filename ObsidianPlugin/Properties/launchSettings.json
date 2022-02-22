@@ -2,7 +2,8 @@
   "profiles": {
     "ObsidianPlugin": {
       "commandName": "Executable",
-      "executablePath": "ServerFiles\\Obsidian.exe",
+      "executablePath": "dotnet",
+      "commandLineArgs": "ObsidianApp.dll",
       "workingDirectory": "ServerFiles\\"
     }
   }
