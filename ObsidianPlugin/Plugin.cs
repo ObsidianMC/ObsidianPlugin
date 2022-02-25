@@ -26,13 +26,12 @@ namespace ObsidianPlugin
     {
         // Any interface from Obsidian.Plugins.Services can be injected into properties
         [Inject] public ILogger Logger { get; set; }
-        [Inject] public IFileReader FileReader { get; set; }
 
         // One of server messages, called when an event occurs
         public void OnLoad(IServer server)
         {
             Logger.Log(message: $"§a{Info.Name} §floaded! Hello §aWorld§f!");
-            Logger.Log(message: $"Hello! I live at §a{FileReader.CreateWorkingDirectory()}§f!");
+            Logger.Log(message: $"Hello! I live at §a{this.GetType().Assembly.Location}§f!");
         }
 
         public async Task OnPlayerJoin(PlayerJoinEventArgs playerJoinEvent)
