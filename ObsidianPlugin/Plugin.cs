@@ -42,10 +42,14 @@ namespace ObsidianPlugin
         }
 
         [Command(commandName: "plugincommand")]
-        [CommandInfo(description: "woop dee doo this command is from within a plugin's own class!!")]
+        [CommandInfo(description: "Command defined in the plugin's own class.")]
         public async Task PluginCommandAsync(CommandContext ctx)
         {
-            await ctx.Sender.SendMessageAsync(message: "Hello from plugin command implemented in Plugin class!");
+            // fun fact: did you know that you're not actually restricted to minecraft's base colors?
+            await ctx.Player.SendMessageAsync(
+                new ChatMessage()
+                .AppendColor(ChatColor.BrightGreen)
+                .AppendText("Hello plugin world!"));
         }
     }
 }

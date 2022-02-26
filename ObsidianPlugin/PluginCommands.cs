@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ObsidianPlugin
 {
     [CommandRoot]
-    public class PluginCommands // Fun fact: You can actually move this class to a different file and it'll work just fine.
+    public class PluginCommands
     {
         [Inject]
         public Plugin Plugin { get; set; }
@@ -19,12 +19,15 @@ namespace ObsidianPlugin
         public ILogger Logger { get; set; }
 
         [Command("classcommand")]
-        [CommandInfo("woop dee doo this command is from a plugin's command class!!")]
+        [CommandInfo("Command defined in the plugin's own class.")]
         public async Task MyCommandAsync(CommandContext ctx)
         {
-            Plugin.Logger.Log("Testing Plugin as injected dependency");
-            Logger.Log("Testing Services as injected dependency");
-            await ctx.Player.SendMessageAsync("Hello from plugin command!");
+            Plugin.Logger.Log("Hello plugin dependency world!");
+            Logger.Log("Hello logger dependency world!");
+            await ctx.Player.SendMessageAsync(
+                new ChatMessage()
+                .AppendColor(ChatColor.BrightGreen)
+                .AppendText("Hello command class world!"));
         }
     }
 }
