@@ -22,7 +22,7 @@ namespace ObsidianPlugin
     [Plugin(name: "Template Plugin", Version = "1.0",
             Authors = "Obsidian Team", Description = "My Plugin.",
             ProjectUrl = "https://github.com/ObsidianMC/Obsidian")]
-    public class ObsidianPlugin : PluginBase
+    public class Plugin : PluginBase
     {
         // Any interface from Obsidian.Plugins.Services can be injected into properties
         [Inject] public ILogger Logger { get; set; }
@@ -46,25 +46,6 @@ namespace ObsidianPlugin
         public async Task PluginCommandAsync(CommandContext ctx)
         {
             await ctx.Sender.SendMessageAsync(message: "Hello from plugin command implemented in Plugin class!");
-        }
-    }
-
-    [CommandRoot]
-    public class MyCommands // Fun fact: You can actually move this class to a different file and it'll work just fine.
-    {
-        [Inject]
-        public ObsidianPlugin Plugin { get; set; }
-
-        [Inject]
-        public ILogger Logger { get; set; }
-
-        [Command("classcommand")]
-        [CommandInfo("woop dee doo this command is from a plugin's command class!!")]
-        public async Task MyCommandAsync(CommandContext ctx)
-        {
-            Plugin.Logger.Log("Testing Plugin as injected dependency");
-            Logger.Log("Testing Services as injected dependency");
-            await ctx.Player.SendMessageAsync("Hello from plugin command!");
         }
     }
 }
