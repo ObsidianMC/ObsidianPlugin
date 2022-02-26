@@ -10,12 +10,16 @@
  * 
  */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Obsidian.API;
 using Obsidian.API.Events;
 using Obsidian.API.Plugins;
 using Obsidian.API.Plugins.Services;
-using System;
-using System.Threading.Tasks;
 
 namespace ObsidianPlugin
 {
@@ -30,7 +34,7 @@ namespace ObsidianPlugin
         // One of server messages, called when an event occurs
         public void OnLoad(IServer server)
         {
-            Logger.Log(message: $"§a{Info.Name} §floaded! Hello §aWorld§f!");
+            Logger.Log(message: $"§a{Info.Name} §floaded! §aHello World§f!");
             Logger.Log(message: $"Hello! I live at §a{this.GetType().Assembly.Location}§f!");
         }
 

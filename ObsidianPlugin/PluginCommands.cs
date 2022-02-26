@@ -1,11 +1,12 @@
-﻿using Obsidian.API;
-using Obsidian.API.Plugins;
-using Obsidian.API.Plugins.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Obsidian.API;
+using Obsidian.API.Plugins;
+using Obsidian.API.Plugins.Services;
 
 namespace ObsidianPlugin
 {
