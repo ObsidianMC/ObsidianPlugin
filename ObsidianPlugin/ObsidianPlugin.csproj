@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -19,12 +19,8 @@
   <None Remove="ServerFiles\**" />
 </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Obsidian.API">
-      <HintPath>ServerFiles\Obsidian.API.dll</HintPath>
-      <CopyLocal>False</CopyLocal>
-	  <Private>False</Private>
-    </Reference>
-  </ItemGroup>
+<ItemGroup>
+  <PackageReference Include="Obsidian.API" Version="1.0.0-nightly-5" />
+</ItemGroup>
 
 </Project>

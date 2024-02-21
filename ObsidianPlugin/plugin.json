@@ -1,0 +1,10 @@
+{
+  "name": "Template Plugin",
+  "id": "change_me",
+  "version": "1.0.0",
+  "authors": [
+    "Obsidian Team"
+  ],
+  "description": "My plugin.",
+  "projectUrl": "https://github.com/ObsidianMC/ObsidianPlugin"
+}
