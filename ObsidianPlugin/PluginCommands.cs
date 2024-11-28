@@ -1,34 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Extensions.Logging;
+using Obsidian.API;
+using Obsidian.API.Commands;
+using Obsidian.API.Plugins;
 using System.Threading.Tasks;
 
-using Obsidian.API;
-using Obsidian.API.Plugins;
-using Obsidian.API.Plugins.Services;
+namespace ObsidianPlugin;
 
-namespace ObsidianPlugin
+//All command modules are created with a scoped lifetime
+public class MyCommands : CommandModuleBase
 {
-    [CommandRoot]
-    public class PluginCommands
+    [Inject]
+    public ILogger<MyCommands> Logger { get; set; }
+
+    [Command("mycommand")]
+    [CommandInfo("woop dee doo this command is from a plugin")]
+    public async Task MyCommandAsync()
     {
-        [Inject]
-        public Plugin Plugin { get; set; }
-
-        [Inject]
-        public ILogger Logger { get; set; }
-
-        [Command("classcommand")]
-        [CommandInfo("Command defined in the plugin's own class.")]
-        public async Task MyCommandAsync(CommandContext ctx)
-        {
-            Plugin.Logger.Log("Hello plugin dependency world!");
-            Logger.Log("Hello logger dependency world!");
-            await ctx.Player.SendMessageAsync(
-                new ChatMessage()
-                .AppendColor(ChatColor.BrightGreen)
-                .AppendText("Hello command class world!"));
-        }
+        Logger.LogInformation("Testing Services as injected dependency");
+        await this.Player.SendMessageAsync("Hello from plugin command!");
     }
 }
