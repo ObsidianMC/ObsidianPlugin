@@ -26,6 +26,8 @@ public sealed class ObsidianPlugin : PluginBase
     [Inject]
     public ILogger<ObsidianPlugin> Logger { get; set; }
 
+    public ObsidianPlugin() { }
+
     //You can register services, commands and events here if you'd like
     public override void ConfigureServices(IServiceCollection services) { }
 
