@@ -10,30 +10,33 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 
-
 		<!-- These properties are used for packing the plugin into a compressed format. -->
-		<PluginAssembly>ObsidianPlugin</PluginAssembly>
-		<PluginVersion>1.0.0.0</PluginVersion>
+		<AssemblyName>ObsidianPlugin</AssemblyName>
+		<Description>This is a official obsidian plugin.</Description>
+		<Version>1.0.0</Version>
+		<Authors>Obsidian Team</Authors>
+		<Title>Obsidian Plugin</Title>
+		<ProjectUrl>https://obsidianmc.net</ProjectUrl>
 		<PluginApiVersion>1.0.0</PluginApiVersion>
 		<PluginPublishDir>bin/$(Configuration)/</PluginPublishDir>
-		
+		<PluginId>obsidianplugin</PluginId>
+
 		<!-- this is optional but you can use this to sign your plugin. Right now the MSBuild task only supports RSA in XML format -->
 		<!--<PluginSigningKey>signing_key.xml</PluginSigningKey>-->
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-46" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0">
-			<ExcludeAssets>runtime</ExcludeAssets>
-		</PackageReference>
-		<PackageReference Include="Obsidian.MSBuild" Version="1.0.3-nightly.g4737df362d" />
-	</ItemGroup>
+	<!--<PropertyGroup>
+		<PluginDependency Id="sampleplugin" Version="[1.0.0]" />
+		<PluginDependency Id="sampleplugin2" Version="[1.0.x,]" Required="true" />
+	</PropertyGroup>-->
 
 	<ItemGroup>
-	  <None Update="plugin.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-62" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6">
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+		<PackageReference Include="Obsidian.MSBuild" Version="1.0.20-nightly.g124504443c" />
 	</ItemGroup>
 
 	<!--Can be used to move the plugin after its been packed useful when debugging ^ ^ -->
