@@ -36,8 +36,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6">
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
-		<PackageReference Include="Obsidian.MSBuild" Version="1.0.25-nightly.g63ab6941ff">
-			<ExcludeAssets>runtime</ExcludeAssets>
+		<PackageReference Include="Obsidian.MSBuild" Version="1.0.26-nightly.g9e0211e667">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 
