@@ -21,8 +21,8 @@
 		<PluginPublishDir>bin/$(Configuration)/</PluginPublishDir>
 		<PluginId>obsidianplugin</PluginId>
 
-		<!-- this is optional but you can use this to sign your plugin. Right now the MSBuild task only supports RSA in XML format -->
-		<!--<PluginSigningKey>signing_key.xml</PluginSigningKey>-->
+		<!-- this is optional but you can use this to sign your plugin. The MSBuild task only supports RSA 3072 bits keys. -->
+		<!--<PluginSigningKey>./private.pem</PluginSigningKey>-->
 	</PropertyGroup>
 
 	<!--<PropertyGroup>
@@ -36,7 +36,9 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6">
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
-		<PackageReference Include="Obsidian.MSBuild" Version="1.0.20-nightly.g124504443c" />
+		<PackageReference Include="Obsidian.MSBuild" Version="1.0.25-nightly.g63ab6941ff">
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<!--Can be used to move the plugin after its been packed useful when debugging ^ ^ -->
