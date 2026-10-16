@@ -52,11 +52,6 @@ public static class DuskPortal
         });
     }
 
-    /// <summary>
-    /// Whether a level is the dusk.
-    /// </summary>
-    public static bool IsDusk(ILevel level) => level is IDimension { DimensionName: Dimension };
-
     // From the dimension back to the overworld, its world's root level, and from that to the dimension. Other
     // levels have no dusk portals: they don't light there.
     private static ILevel? Target(ILevel level)
