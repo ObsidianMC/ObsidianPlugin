@@ -1,81 +1,60 @@
 ﻿/**
- * 
- * It is STRONGLY recommended to get familiar with both the API documentation and the basic plugin guide.
- * These can be found here:
- * https://obsidian-mc.net/articles/plugins.html
- * https://obsidian-mc.net/api/index.html
- * 
+ *
+ * Welcome to the Obsidian plugin sample! It's a server-side plugin: it runs on the server only, and adds nothing
+ * that vanilla clients need a mod for, so they can still join. See README.md for what it does.
+ *
+ * It is STRONGLY recommended to get familiar with the plugin documentation:
+ * https://github.com/ObsidianMC/Obsidian/blob/1.21.x/docs/plugin-content.md
+ *
  * Please DO take note that Obsidian is still in active development,
- * meaning both the server and it's API are extremely prone to changes!
- * 
+ * meaning both the server and its API are prone to changes!
+ *
  */
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Obsidian.API;
-using Obsidian.API.Events;
 using Obsidian.API.Plugins;
-using System.Threading.Tasks;
+using ObsidianPlugin.Portal;
 
 namespace ObsidianPlugin;
+
 public sealed class ObsidianPlugin : PluginBase
 {
-    // Dependencies will be injected automatically, if dependency class and field/property names match
-    // Plugins won't load until all their required dependencies are added
-    // Optional dependencies may be injected at any time, if at all
+    // Services are injected into properties marked [Inject], such as the server's logger.
     [Inject]
-    public ILogger<ObsidianPlugin> Logger { get; set; }
+    public ILogger<ObsidianPlugin> Logger { get; set; } = null!;
 
-    public ObsidianPlugin() { }
-
-    //You can register services, commands and events here if you'd like
-    public override void ConfigureServices(IServiceCollection services) { }
-
-    //You can register commands, events and soon to be items, blocks and entities
+    // Register the plugin's content here: commands, events, portals, saved data and attachments, and also blocks,
+    // items and entities. Registering blocks, items, entities or other synced content makes the server refuse
+    // vanilla clients, so this sample registers none: its portal uses vanilla's portal block, and its dimension is
+    // data (data/obsidianplugin/), which the server loads by itself.
     public override void ConfigureRegistry(IPluginRegistry registry)
     {
-        //Will scan for command classes and register them for you
+        // Scans the plugin for command classes (CommandModuleBase) and registers their commands: DuskCommands.
         registry.MapCommands();
 
-        //Will scan for classes that inherit from MinecraftEventHandler
+        // Scans the plugin for classes that inherit from MinecraftEventHandler: JoinGreeter.
         registry.MapEvents();
 
-        //For those coming from the web side of .net these will seem familiar to you.
-        //You're able to register commands through a "minimal api" like approach
-        registry.MapCommand("test",
-            [CommandInfo("test command")]
-            async (CommandContext ctx, int number, int otherNumber) =>
-            {
-                await ctx.Player.SendMessageAsync($"Test #{number} and #{otherNumber}. This command was executed from the MinimalAPI.");
-            });
-
-        //As above so below :))
-        registry.MapEvent((IncomingChatMessageEventArgs chat) =>
-        {
-            this.Logger.LogDebug("Got a chat message! From MinimalAPI event.");
-        });
+        DuskPortal.Register(registry);
+        DuskVisits.Register(registry);
     }
 
-    //Called when the plugin has fully loaded
+    // Called when the plugin has fully loaded.
     public override ValueTask OnLoadedAsync(IServer server)
     {
-        Logger.LogInformation("§a{pluginName} §floaded! Hello §aEveryone§f!", Info.Name);
+        this.Logger.LogInformation(
+            "§a{PluginName} §floaded! Light an amethyst portal to visit the dusk.",
+            this.Info.Name);
 
         return ValueTask.CompletedTask;
     }
 
-    //Called when the world has loaded and the server is ready for connections
-    public override ValueTask OnServerReadyAsync(IServer server)
-    {
-        Logger.LogInformation("Wow you can join the server!!");
-        return ValueTask.CompletedTask;
-    }
-
-    //This is self explanatory (called when the plugin is being unloaded)
+    // Called when the plugin is being unloaded.
     public override ValueTask OnUnloadingAsync()
     {
-        Logger.LogInformation("I'm unloading now :(");
+        this.Logger.LogInformation("{PluginName} is unloading.", this.Info.Name);
+
         return ValueTask.CompletedTask;
     }
 }
-
