@@ -1,8 +1,8 @@
 # ObsidianPlugin
 
 A template repository and sample for [Obsidian](https://github.com/ObsidianMC/Obsidian) server plugins. It adds a
-dimension, a portal to it and a command that counts the trips there, using the public API alone (`Obsidian.API`, whose
-package includes `Obsidian.Nbt` for saved values).
+dimension with a biome of its own, a portal to it and a command that counts the trips there, using the public API alone
+(`Obsidian.API`, whose package includes `Obsidian.Nbt` for saved values).
 
 ## Server-side only
 
@@ -15,6 +15,12 @@ none of them:
 - **The dusk**, `obsidianplugin:dusk`: a dimension in data alone. `data/obsidianplugin/dimension/dusk.json` is a
   flat level of end stone over bedrock, and its type, `data/obsidianplugin/dimension_type/dusk.json`, gives it the
   End's sky and a violet fog. Clients are sent dimension types with their data, so vanilla clients draw it too.
+- **The dusk wastes**, `obsidianplugin:dusk_wastes`: the dusk's biome, in
+  `data/obsidianplugin/worldgen/biome/dusk_wastes.json`, which the dimension's flat generator names as its `biome`.
+  The file is vanilla's biome format. Its `attributes` give it a deeper violet fog, drifting portal particles and the
+  End's music, and make water poured there evaporate, which the server applies itself. Biomes are sent to clients
+  with their data too, so vanilla clients show them. To generate a biome in the overworld or the Nether as well, add a
+  biome region (see [Biome regions][biome-regions]).
 - **The dusk portal** ([Portal/DuskPortal.cs](ObsidianPlugin/Portal/DuskPortal.cs)): a frame of amethyst blocks, at
   least 2 by 3 inside, lit by using an amethyst shard on it, fills with vanilla's Nether portal block and takes what
   stands in it to the same place in the dusk, or back to the overworld, building a frame there if none is near. The
@@ -53,12 +59,15 @@ loads the plugin.
 2. In `ObsidianPlugin.csproj`, set `PluginId` (your namespace, lowercase), `Version`, `Title`, `Authors`,
    `Description` and `ProjectUrl`.
 3. Replace the `obsidianplugin` namespace everywhere it's used: the identifiers in the `.cs` files and the
-   `data/obsidianplugin/` folder, including the `"type"` in `dimension/dusk.json`.
-4. Remove the dusk, its portal and `/dusk` once you don't need them as examples.
+   `data/obsidianplugin/` folder, including the `"type"` and `"biome"` in `dimension/dusk.json`.
+4. Remove the dusk, its biome, its portal and `/dusk` once you don't need them as examples.
 
 ## Documentation
 
 [plugin-content.md](https://github.com/ObsidianMC/Obsidian/blob/1.21.x/docs/plugin-content.md) describes the API:
-commands, events, dimensions, portals, saved data and attachments, and the content that needs a modded client.
+commands, events, dimensions, biomes, portals, saved data and attachments, and the content that needs a modded
+client.
 
 Obsidian is still in active development, so both the server and its API are prone to change.
+
+[biome-regions]: https://github.com/ObsidianMC/Obsidian/blob/1.21.x/docs/plugin-content.md#biome-regions

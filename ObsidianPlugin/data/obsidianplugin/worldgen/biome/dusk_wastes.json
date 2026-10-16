@@ -1,0 +1,30 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.5,
+  "downfall": 0,
+  "attributes": {
+    "minecraft:visual/fog_color": "#4a2f6e",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": { "type": "minecraft:reverse_portal" },
+        "probability": 0.005
+      }
+    ],
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.end",
+        "min_delay": 6000,
+        "max_delay": 24000,
+        "replace_current_music": true
+      }
+    },
+    "minecraft:gameplay/water_evaporates": true
+  },
+  "effects": {
+    "water_color": "#7b5bb6"
+  },
+  "carvers": [],
+  "features": [],
+  "spawners": {},
+  "spawn_costs": {}
+}
