@@ -1,49 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-		<PreserveCompilationContext>false</PreserveCompilationContext>
-		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-		<OutputType>Library</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<EnableDynamicLoading>true</EnableDynamicLoading>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-
-		<!-- These properties are used for packing the plugin into a compressed format. -->
-		<AssemblyName>ObsidianPlugin</AssemblyName>
-		<Description>This is a official obsidian plugin.</Description>
-		<Version>1.0.0</Version>
-		<Authors>Obsidian Team</Authors>
-		<Title>Obsidian Plugin</Title>
-		<ProjectUrl>https://obsidianmc.net</ProjectUrl>
-		<PluginApiVersion>1.0.0</PluginApiVersion>
-		<PluginPublishDir>bin/$(Configuration)/</PluginPublishDir>
-		<PluginId>obsidianplugin</PluginId>
-
-		<!-- this is optional but you can use this to sign your plugin. The MSBuild task only supports RSA 3072 bits keys. -->
-		<!--<PluginSigningKey>./private.pem</PluginSigningKey>-->
 	</PropertyGroup>
 
-	<!--<PropertyGroup>
-		<PluginDependency Id="sampleplugin" Version="[1.0.0]" />
-		<PluginDependency Id="sampleplugin2" Version="[1.0.x,]" Required="true" />
-	</PropertyGroup>-->
+	<!-- The plugin's metadata: Obsidian.MSBuild writes these into the archive's obsidian.mod.json. -->
+	<PropertyGroup>
+		<PluginId>obsidianplugin</PluginId>
+		<Version>1.0.0</Version>
+		<Title>Obsidian Plugin</Title>
+		<Authors>Obsidian Team</Authors>
+		<Description>A server-side sample: a dimension, a portal to it and a command counting visits.</Description>
+		<ProjectUrl>https://github.com/ObsidianMC/ObsidianPlugin</ProjectUrl>
+
+		<!-- Runs on the server only; the Obsidian client skips it. -->
+		<PluginSide>server</PluginSide>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-62" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6">
-			<ExcludeAssets>runtime</ExcludeAssets>
-		</PackageReference>
-		<PackageReference Include="Obsidian.MSBuild" Version="1.0.26-nightly.g9e0211e667">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
+		<!--
+			Obsidian.API brings the Nbt types too (Obsidian.Nbt.dll), which saved data and attachments use. The server
+			provides both, and their dependencies, at runtime, so they're only compiled against: the .obby archive
+			holds the plugin alone.
+		-->
+		<PackageReference Include="Obsidian.API" Version="1.1.0-nightly.*" ExcludeAssets="runtime" />
 
-	<!--Can be used to move the plugin after its been packed useful when debugging ^ ^ -->
-	<!--<Target Name="MovePlugin" AfterTargets="PackPlugin">
-		<Move SourceFiles="$(PluginPublishDir)/$(PluginName).obby" DestinationFolder="{YOUR DESTINATION HERE}" />
-	</Target>-->
+		<!-- Packs the build output into ObsidianPlugin.obby; a build tool only, so it isn't a dependency. -->
+		<PackageReference Include="Obsidian.MSBuild" Version="2.0.*-*" PrivateAssets="all"
+			IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+	</ItemGroup>
 
 </Project>
